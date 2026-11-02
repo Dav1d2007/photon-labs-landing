@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0B2D50">
+  <meta name="description" content="Propuesta académica de Photon Labs para transformar el consumo eléctrico de un aula en un dimensionamiento y una cotización fotovoltaica preliminar.">
+  <title>Photon Labs | Soluciones solares con ingeniería</title>
+  <link rel="icon" type="image/png" href="assets/photon-labs-logo.png">
+  <style>
+    :root {
+      --navy: #0B2D50;
+      --blue: #1677C8;
+      --gold: #FFB800;
+      --orange: #F28C28;
+      --ink: #172033;
+      --muted: #627087;
+      --paper: #F5F8FC;
+      --white: #FFFFFF;
+      --line: #E3EAF2;
+      --shadow: 0 18px 55px rgba(11,45,80,.10);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 44px)); margin: 0 auto; }
+    .topbar { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(227,234,242,.85); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -.04em; color: var(--navy); }
+    .brand-mark { width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center; background: var(--navy); color: var(--gold); font-size: 21px; }
+    .brand small { display: block; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .navlinks { display: flex; align-items: center; gap: 27px; color: #526177; font-size: 13px; font-weight: 650; }
+    .navlinks a:hover { color: var(--blue); }
+    .nav-cta, .button { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: 12px 19px; background: var(--navy); color: white; font-size: 13px; font-weight: 750; transition: transform .2s, background .2s; }
+    .nav-cta:hover, .button:hover { transform: translateY(-2px); background: var(--blue); }
+    .hero { overflow: hidden; position: relative; padding: 82px 0 74px; background: radial-gradient(circle at 86% 20%, rgba(255,184,0,.15), transparent 24%), linear-gradient(135deg,#F7FAFE 0%,#FFFFFF 58%,#F2F7FC 100%); }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 48px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--blue); font-size: 11px; font-weight: 850; letter-spacing: .16em; text-transform: uppercase; }
+    .eyebrow:before { content: ""; width: 25px; height: 2px; background: var(--gold); }
+    h1 { margin: 19px 0 18px; max-width: 690px; color: var(--navy); font-size: clamp(42px,6vw,68px); line-height: 1.04; letter-spacing: -.065em; }
+    h1 span { color: var(--blue); }
+    .lead { max-width: 590px; color: var(--muted); font-size: 17px; line-height: 1.8; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button.secondary { background: white; color: var(--navy); border: 1px solid var(--line); }
+    .button.secondary:hover { background: var(--paper); }
+    .hero-note { margin-top: 20px; color: #7A8798; font-size: 11px; }
+    .logo-panel { position: relative; padding: 24px; border: 1px solid rgba(227,234,242,.9); border-radius: 28px; background: rgba(255,255,255,.82); box-shadow: var(--shadow); }
+    .logo-panel img { display: block; width: 100%; height: auto; }
+    .logo-caption { display: flex; justify-content: space-between; gap: 12px; padding: 15px 4px 0; color: var(--muted); font-size: 11px; }
+    .logo-caption strong { color: var(--navy); }
+    .sun-dot { position: absolute; right: -13px; top: -13px; width: 43px; height: 43px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 9px rgba(255,184,0,.13); }
+    .section { padding: 86px 0; }
+    .section.soft { background: var(--paper); }
+    .section-head { max-width: 700px; margin-bottom: 38px; }
+    .kicker { color: var(--blue); font-size: 11px; font-weight: 850; letter-spacing: .16em; text-transform: uppercase; }
+    h2 { margin: 10px 0 13px; color: var(--navy); font-size: clamp(30px,4vw,43px); line-height: 1.12; letter-spacing: -.045em; }
+    .section-head p { margin: 0; color: var(--muted); font-size: 15px; }
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .problem-card { padding: 29px; border-radius: var(--radius); background: white; border: 1px solid var(--line); }
+    .problem-card.highlight { background: var(--navy); color: white; border-color: var(--navy); }
+    .icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; margin-bottom: 18px; background: #EAF3FC; color: var(--blue); font-size: 21px; }
+    .highlight .icon { background: rgba(255,184,0,.16); color: var(--gold); }
+    .problem-card h3 { margin: 0 0 9px; font-size: 19px; letter-spacing: -.02em; }
+    .problem-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .highlight p { color: #D5E1EF; }
+    .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; counter-reset: step; }
+    .step { position: relative; min-height: 190px; padding: 23px 20px; border: 1px solid var(--line); border-radius: 18px; background: white; counter-increment: step; }
+    .step:before { content: "0" counter(step); display: block; margin-bottom: 23px; color: var(--gold); font-size: 13px; font-weight: 900; letter-spacing: .08em; }
+    .step h3 { margin: 0 0 8px; color: var(--navy); font-size: 16px; }
+    .step p { margin: 0; color: var(--muted); font-size: 12px; }
+    .modules { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .module { padding: 24px; border-radius: 18px; background: white; border: 1px solid var(--line); transition: transform .2s, box-shadow .2s; }
+    .module:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .module .icon { margin-bottom: 15px; }
+    .module h3 { margin: 0 0 8px; color: var(--navy); font-size: 16px; }
+    .module p { margin: 0; color: var(--muted); font-size: 13px; }
+    .tech-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 30px; align-items: start; }
+    .tech-copy p { color: var(--muted); font-size: 14px; }
+    .formula-list { display: grid; gap: 12px; }
+    .formula { padding: 18px 20px; border-radius: 15px; background: white; border: 1px solid var(--line); }
+    .formula small { display: block; margin-bottom: 7px; color: var(--blue); font-size: 10px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+    .formula code { color: var(--navy); font-family: "SFMono-Regular",Consolas,monospace; font-size: 14px; white-space: normal; }
+    .formula p { margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+    .checks { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+    .check { display: flex; gap: 13px; padding: 19px; background: white; border: 1px solid var(--line); border-radius: 16px; }
+    .check-mark { flex: 0 0 25px; height: 25px; display: grid; place-items: center; border-radius: 50%; background: #FFF4D2; color: #946700; font-weight: 900; font-size: 13px; }
+    .check strong { display: block; color: var(--navy); font-size: 13px; }
+    .check span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+    .report { padding: 58px; display: grid; grid-template-columns: 1fr .8fr; align-items: center; gap: 35px; border-radius: 28px; color: white; background: linear-gradient(120deg,var(--navy),#104675); overflow: hidden; }
+    .report h2 { color: white; }
+    .report p { max-width: 560px; color: #D7E4F1; font-size: 14px; }
+    .report-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 15px; padding: 0; margin: 22px 0 0; list-style: none; color: #E5EEF7; font-size: 12px; }
+    .report-list li:before { content: "✓"; margin-right: 8px; color: var(--gold); font-weight: 900; }
+    .report-visual { padding: 24px; border-radius: 18px; background: white; color: var(--navy); box-shadow: 0 15px 35px rgba(0,0,0,.16); transform: rotate(2deg); }
+    .report-visual .mini-top { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); padding-bottom: 12px; font-size: 9px; font-weight: 900; letter-spacing: .1em; }
+    .mini-sun { width: 15px; height: 15px; background: var(--gold); border-radius: 50%; }
+    .report-visual h3 { margin: 19px 0 5px; font-size: 17px; }
+    .report-visual p { color: var(--muted); font-size: 10px; }
+    .mini-bars { display: flex; align-items: end; gap: 7px; height: 72px; margin-top: 20px; }
+    .mini-bars i { display: block; flex: 1; border-radius: 5px 5px 0 0; background: #B9D9F3; }
+    .mini-bars i:nth-child(1){height:38%}.mini-bars i:nth-child(2){height:58%}.mini-bars i:nth-child(3){height:48%}.mini-bars i:nth-child(4){height:83%;background:var(--blue)}.mini-bars i:nth-child(5){height:67%}.mini-bars i:nth-child(6){height:95%;background:var(--gold)}
+    .mini-foot { margin-top: 13px; color: var(--muted); font-size: 8px; }
+    .disclaimer { margin-top: 22px; padding: 17px 20px; border-left: 3px solid var(--gold); background: #FFF9E8; color: #6D5B2B; border-radius: 0 12px 12px 0; font-size: 12px; }
+    .closing { padding: 78px 0; text-align: center; }
+    .closing h2 { max-width: 690px; margin: 12px auto; }
+    .closing p { max-width: 620px; margin: 0 auto 25px; color: var(--muted); font-size: 14px; }
+    footer { padding: 27px 0; background: #071F37; color: #C3D1DF; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; font-size: 11px; }
+    .footer-brand { color: white; font-weight: 850; letter-spacing: .04em; }
+    .footer-note { color: #9FB2C6; text-align: right; }
+    @media (max-width: 850px) {
+      .navlinks { display: none; }
+      .hero-grid, .tech-grid, .report { grid-template-columns: 1fr; }
+      .hero { padding-top: 58px; }
+      .logo-panel { max-width: 620px; }
+      .steps { grid-template-columns: repeat(2,1fr); }
+      .modules { grid-template-columns: repeat(2,1fr); }
+      .report { padding: 35px; }
+      .report-visual { max-width: 390px; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 30px,1120px); }
+      .nav { min-height: 66px; }
+      .nav-cta { padding: 10px 14px; font-size: 11px; }
+      .hero { padding: 48px 0 55px; }
+      .lead { font-size: 15px; }
+      .logo-panel { padding: 13px; }
+      .section { padding: 62px 0; }
+      .problem-grid, .steps, .modules, .checks { grid-template-columns: 1fr; }
+      .step { min-height: auto; }
+      .step:before { margin-bottom: 12px; }
+      .report { padding: 27px 21px; }
+      .report-list { grid-template-columns: 1fr; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+      .footer-note { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#inicio" aria-label="Photon Labs, inicio">
+        <span class="brand-mark">Φ</span>
+        <span>PHOTON LABS<small>Ingeniería fotovoltaica</small></span>
+      </a>
+      <nav class="navlinks" aria-label="Navegación principal">
+        <a href="#solucion">Solución</a><a href="#metodologia">Metodología</a><a href="#componentes">Componentes</a><a href="#reporte">Reporte</a>
+      </nav>
+      <a class="nav-cta" href="#solucion">Conoce la propuesta ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Energía solar diseñada con ingeniería</div>
+          <h1>Del consumo eléctrico a una <span>solución solar.</span></h1>
+          <p class="lead">Una propuesta para analizar la demanda de un aula, dimensionar un sistema fotovoltaico y convertir los resultados técnicos en una cotización clara para el cliente.</p>
+          <div class="hero-actions">
+            <a class="button" href="#solucion">Explorar la solución <span aria-hidden="true">&nbsp;→</span></a>
+            <a class="button secondary" href="#metodologia">Ver metodología</a>
+          </div>
+          <p class="hero-note">TE1020 · Análisis de Circuitos Eléctricos · Situación problema académica</p>
+        </div>
+        <div class="logo-panel">
+          <span class="sun-dot" aria-hidden="true"></span>
+          <img src="assets/photon-labs-logo.png" alt="Logotipo de Photon Labs: letra A negra, sol dorado y panel solar azul">
+          <div class="logo-caption"><strong>PHOTON LABS S.A. DE C.V.</strong><span>Soluciones fotovoltaicas</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="solucion">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">El desafío</div>
+          <h2>Una necesidad: convertir datos en decisiones.</h2>
+          <p>Photon Labs necesita una herramienta propia que transforme la información de consumo de un cliente en una propuesta técnica y económica comprensible, verificable y lista para presentarse.</p>
+        </div>
+        <div class="problem-grid">
+          <article class="problem-card">
+            <div class="icon">⌁</div>
+            <h3>La situación actual</h3>
+            <p>El consumo eléctrico, las características del inmueble y los precios de los equipos suelen estar dispersos. Sin un método común, comparar alternativas y justificar una cotización se vuelve complicado.</p>
+          </article>
+          <article class="problem-card highlight">
+            <div class="icon">☀</div>
+            <h3>La solución propuesta</h3>
+            <p>Un flujo de análisis que reúne cargas, recurso solar, componentes comerciales y evaluación económica para generar un dimensionamiento preliminar y un reporte profesional. El caso inicial será un salón de clases.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="metodologia">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Metodología de trabajo</div>
+          <h2>De la información del aula a una propuesta.</h2>
+          <p>El proceso conecta el análisis de circuitos eléctricos con las decisiones de diseño del sistema fotovoltaico.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><h3>Registrar el consumo</h3><p>Identificar equipos, cantidad, potencia y horas de uso para estimar la energía diaria.</p></article>
+          <article class="step"><h3>Dimensionar el arreglo</h3><p>Usar la energía requerida y las horas solares pico para estimar paneles y su configuración.</p></article>
+          <article class="step"><h3>Validar componentes</h3><p>Revisar tensiones, corrientes, potencia, autonomía y compatibilidad entre equipos.</p></article>
+          <article class="step"><h3>Evaluar y comunicar</h3><p>Integrar precios verificables, inversión, ahorro estimado y recuperación en un reporte.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="componentes">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">La solución por módulos</div>
+          <h2>Seis módulos para una cotización integral.</h2>
+          <p>Cada módulo resuelve una parte del problema y aporta información al resultado final.</p>
+        </div>
+        <div class="modules">
+          <article class="module"><div class="icon">▦</div><h3>01 · Consumo del aula</h3><p>Inventario de cargas, cantidad, potencia y tiempo de operación. Estimación de demanda y energía consumida en kWh.</p></article>
+          <article class="module"><div class="icon">☀</div><h3>02 · Paneles solares</h3><p>Estimación de cantidad y potencia del arreglo, considerando horas solares pico y pérdidas asumidas.</p></article>
+          <article class="module"><div class="icon">ϟ</div><h3>03 · Inversor</h3><p>Selección de un modelo comercial y revisión de potencia, rango de tensión, corriente y compatibilidad.</p></article>
+          <article class="module"><div class="icon">▣</div><h3>04 · Almacenamiento</h3><p>Estimación de capacidad de baterías, configuración y autonomía, con supuestos y límites explícitos.</p></article>
+          <article class="module"><div class="icon">⌕</div><h3>05 · Catálogo comercial</h3><p>Registro de marca, modelo, especificaciones, precio, proveedor, enlace y fecha de consulta.</p></article>
+          <article class="module"><div class="icon">₱</div><h3>06 · Evaluación económica</h3><p>Integración de inversión, ahorro estimado y periodo de recuperación con tarifa eléctrica en MXN/kWh.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="wrap tech-grid">
+        <div class="tech-copy">
+          <div class="kicker">Fundamento de ingeniería</div>
+          <h2>Los cálculos deben poder explicarse.</h2>
+          <p>La propuesta parte de magnitudes eléctricas medibles. La potencia describe la rapidez con la que un equipo consume energía; la energía depende también del tiempo de uso.</p>
+          <p>Las expresiones siguientes muestran el modelo conceptual. Los resultados numéricos requieren el inventario real del aula, las horas solares pico, las fichas técnicas y los supuestos de diseño.</p>
+        </div>
+        <div class="formula-list">
+          <div class="formula"><small>Energía diaria</small><code>E<sub>día</sub> = Σ(P<sub>i</sub> × t<sub>i</sub> × n<sub>i</sub>) / 1000</code><p>Potencia en watts, tiempo en horas y cantidad de equipos; resultado en kWh/día.</p></div>
+          <div class="formula"><small>Potencia fotovoltaica preliminar</small><code>P<sub>FV</sub> ≈ E<sub>día</sub> / (HSP × η)</code><p>HSP son las horas solares pico y η representa el rendimiento global supuesto del sistema.</p></div>
+          <div class="formula"><small>Configuración eléctrica</small><code>Serie → aumenta tensión · Paralelo → aumenta corriente</code><p>La configuración final debe respetar los límites de entrada del inversor y las especificaciones de los módulos.</p></div>
+          <div class="formula"><small>Recuperación simple</small><code>Retorno ≈ inversión inicial / ahorro anual</code><p>Es una estimación; depende de tarifa, energía realmente aprovechada, costos y condiciones de operación.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Criterios de validación</div>
+          <h2>Una propuesta confiable no se basa en suposiciones ocultas.</h2>
+          <p>Antes de presentar una alternativa, los resultados deben contrastarse con información técnica y pruebas manuales.</p>
+        </div>
+        <div class="checks">
+          <div class="check"><div class="check-mark">✓</div><div><strong>Datos trazables</strong><span>Fichas oficiales, precios, proveedor, enlace y fecha de consulta.</span></div></div>
+          <div class="check"><div class="check-mark">✓</div><div><strong>Compatibilidad eléctrica</strong><span>Verificación de voltajes, corrientes, potencia y límites de operación.</span></div></div>
+          <div class="check"><div class="check-mark">✓</div><div><strong>Pruebas del aula</strong><span>Contrastar el inventario y el consumo estimado con mediciones o recibos disponibles.</span></div></div>
+          <div class="check"><div class="check-mark">✓</div><div><strong>Supuestos transparentes</strong><span>Declarar pérdidas, autonomía, tarifa y condiciones que afectan el resultado.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="reporte">
+      <div class="wrap">
+        <div class="report">
+          <div>
+            <div class="kicker" style="color:#FFB800">Entregable para el cliente</div>
+            <h2>Una propuesta que se entiende y se puede evaluar.</h2>
+            <p>El resultado esperado es un reporte PDF con jerarquía visual, cifras claras y anexos técnicos. Debe explicar qué se propone instalar, cuánto costaría y qué beneficios podrían esperarse, sin prometer ahorros garantizados.</p>
+            <ul class="report-list"><li>Resumen ejecutivo</li><li>Análisis del consumo</li><li>Sistema recomendado</li><li>Componentes y fichas</li><li>Presupuesto</li><li>Ahorro y retorno</li><li>Gráficas</li><li>Anexos técnicos</li></ul>
+          </div>
+          <div class="report-visual" aria-label="Representación visual de un reporte de propuesta solar">
+            <div class="mini-top"><span>PHOTON LABS</span><span class="mini-sun"></span></div>
+            <h3>Propuesta fotovoltaica</h3>
+            <p>ANÁLISIS ENERGÉTICO · CASO AULA ESCOLAR</p>
+            <div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="mini-foot">Visual conceptual del reporte · No representa datos medidos</div>
+          </div>
+        </div>
+        <div class="disclaimer"><strong>Alcance:</strong> esta solución corresponde a un dimensionamiento y una cotización preliminar con cálculos ejecutados en el navegador y catálogos locales. No sustituye un proyecto ejecutivo ni una validación profesional para construcción.</div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="wrap">
+        <div class="kicker">Photon Labs · TE1020</div>
+        <h2>Ingeniería que transforma energía en oportunidades.</h2>
+        <p>La meta es convertir el análisis de circuitos eléctricos en una herramienta clara para evaluar soluciones fotovoltaicas, justificar decisiones y comunicar su valor.</p>
+        <a class="button" href="#inicio">Volver al inicio ↑</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div><div class="footer-brand">PHOTON LABS</div><div>Soluciones fotovoltaicas</div></div>
+      <div class="footer-note">Proyecto académico · TE1020 Análisis de Circuitos Eléctricos<br>Propuesta informativa; no constituye una oferta comercial.</div>
+    </div>
+  </footer>
+</body>
+</html>
